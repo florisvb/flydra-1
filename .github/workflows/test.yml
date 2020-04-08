@@ -64,7 +64,10 @@ jobs:
       run: |
         cd flydra_analysis
         python setup.py install --user
+    - name: Install missing dependencies for flydra_analysis
+      run: |
+        python -m pip install motmot.imops motmot.FlyMovieFormat motmot.ufmf
     - name: Test flydra_analysis
       run: |
         cd docs
-        python -c "import nose; nose.run_exit()" --eval-attr="not (known_fail or slow_command)" --config ../flydra_analysis/setup.cfg
+        ETS_TOOLKIT='null' python -c "import nose; nose.run_exit()" --eval-attr="not (known_fail or slow_command)" --config ../flydra_analysis/setup.cfg
