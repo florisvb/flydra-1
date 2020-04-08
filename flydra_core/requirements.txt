@@ -1,5 +1,4 @@
 numpy
-Cython
 scipy
 cgkit1
 pymvg
