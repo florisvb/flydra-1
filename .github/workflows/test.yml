@@ -47,16 +47,18 @@ jobs:
     - uses: actions/checkout@v2
     - name: Install system packages
       run: sudo apt install -y python-cairo python-numpy python-scipy python-nose python-h5py python-pandas mayavi2 python-sympy python-docopt python-cherrypy3 python-matplotlib python-progressbar python-tables python-six
-    - name: Upgrade pip
-      run: python -m pip install --upgrade pip
     - name: Build and install flydra_core
-      run: python -m pip install -v ./flydra_core
+      run: |
+      cd flydra_core
+      python setup.py install
     - name: Test flydra_core
       run: |
         cd docs
         python -c "import nose; nose.run_exit()" --eval-attr="not (known_fail or slow_command)" --config ../flydra_core/setup.cfg
     - name: Build and install flydra_analysis
-      run: python -m pip install -v ./flydra_analysis
+      run: |
+        cd flydra_analysis
+        python setup.py install
     - name: Test flydra_analysis
       run: |
         cd docs
