@@ -27,6 +27,7 @@ INSTALL_REQUIRES = [
     "pymvg",
     "benu",
     "motmot.ufmf",
+    "motmot.FlyMovieFormat",
     "adskalman",
     "matplotlib",
     "progressbar",
