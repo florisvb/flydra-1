@@ -11,19 +11,6 @@ this_directory = path.abspath(path.dirname(__file__))
 with open(path.join(this_directory, "README.md"), encoding="utf-8") as f:
     long_description = f.read()
 
-INSTALL_REQUIRES = [
-    # these are Depends in stdeb.cfg. (The Build-Depends must be already installed.)
-    "numpy",
-    "scipy",
-    "cgkit1",
-    "pymvg",
-    "adskalman",
-    "tzlocal",
-    "tables",
-    "six",
-    "nose",
-]
-
 ext_modules = []
 
 ext_modules.append(
@@ -97,5 +84,4 @@ setup(
         ],
     },
     package_data={"flydra_core": ["flydra_server_art.png", "sample_calibration/*",],},
-    install_requires=INSTALL_REQUIRES,
 )

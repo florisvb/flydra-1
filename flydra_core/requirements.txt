@@ -1,0 +1,9 @@
+numpy
+scipy
+cgkit1
+pymvg
+adskalman
+tzlocal
+tables
+six
+nose
