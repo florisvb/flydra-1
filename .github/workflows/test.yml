@@ -49,8 +49,8 @@ jobs:
       run: sudo apt install -y python-cairo python-numpy python-scipy python-nose python-h5py python-pandas mayavi2 python-sympy python-docopt python-cherrypy3 python-matplotlib python-progressbar python-tables python-six
     - name: Build and install flydra_core
       run: |
-      cd flydra_core
-      python setup.py install
+        cd flydra_core
+        python setup.py install
     - name: Test flydra_core
       run: |
         cd docs
