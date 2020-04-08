@@ -51,11 +51,9 @@ jobs:
       run: |
         cd flydra_core
         python setup.py install --user
-    - name: Upgrade pip
-      run: python -m pip install --upgrade pip
     - name: Install missing dependencies for flydra_core
       run: |
-        python -m pip install --no-build-isolation cgkit1
+        python -m pip install cgkit1
     - name: Test flydra_core
       run: |
         cd docs
