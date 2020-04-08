@@ -41,7 +41,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-16.04, ubuntu-latest]
+        os: [ubuntu-16.04]
 
     steps:
     - uses: actions/checkout@v2
@@ -53,7 +53,7 @@ jobs:
         python setup.py install --user
     - name: Install missing dependencies for flydra_core
       run: |
-        python -m pip install cgkit1
+        python -m pip install cgkit1 adskalman tzlocal pymvg
     - name: Test flydra_core
       run: |
         cd docs
