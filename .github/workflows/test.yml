@@ -44,7 +44,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install system packages
-      run: sudo apt install -y python-cairo python3-cairo
+      run: sudo apt install -y python-cairo python-numpy python-scipy python-nose python-h5py python-pandas mayavi2 python-sympy python-docopt python-cherrypy3 python-matplotlib python-progressbar python-tables python-six
     - name: Upgrade pip
       run: python -m pip install --upgrade pip
     - name: Build and install flydra_core
