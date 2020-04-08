@@ -44,6 +44,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Install system packages
+      run: sudo apt install -y python-cairo python3-cairo
     - name: Setup python
       uses: actions/setup-python@v1
       with:
