@@ -50,7 +50,7 @@ jobs:
     - name: Build and install flydra_core
       run: |
         cd flydra_core
-        python setup.py install
+        python setup.py install --user
     - name: Test flydra_core
       run: |
         cd docs
@@ -58,7 +58,7 @@ jobs:
     - name: Build and install flydra_analysis
       run: |
         cd flydra_analysis
-        python setup.py install
+        python setup.py install --user
     - name: Test flydra_analysis
       run: |
         cd docs
