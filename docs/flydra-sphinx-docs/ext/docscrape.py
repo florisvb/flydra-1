@@ -6,7 +6,6 @@ import inspect
 import textwrap
 import re
 import pydoc
-from StringIO import StringIO
 from warnings import warn
 
 class Reader(object):

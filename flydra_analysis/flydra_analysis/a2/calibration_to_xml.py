@@ -2,8 +2,6 @@ from __future__ import print_function
 import flydra_core.reconstruct as reconstruct
 from optparse import OptionParser
 import xml.etree.ElementTree as ET
-import StringIO
-
 
 def doit(calsource, options=None):
     r = reconstruct.Reconstructor(calsource)
