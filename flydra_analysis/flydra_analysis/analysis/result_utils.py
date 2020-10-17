@@ -435,7 +435,10 @@ def read_textlog_header(results, fail_on_error=True):
             raise
         else:
             return None
-    infostr = textlog1["message"].tostring().strip("\x00")
+    if sys.version_info[0] < 3:
+        infostr = textlog1["message"].tostring().strip("\x00")
+    else:
+        infostr = textlog1["message"][0].decode('utf-8')
     if not (
         infostr.startswith("MainBrain running at")
         or infostr.startswith("kalmanize running at")

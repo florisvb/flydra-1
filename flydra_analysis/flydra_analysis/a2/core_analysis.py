@@ -297,7 +297,10 @@ def _get_initial_file_info(kresults):
     )
     if hasattr(kresults.root, "textlog"):
         textlog = kresults.root.textlog.read_coordinates([0])
-        infostr = textlog["message"].tostring().strip("\x00")
+        if sys.version_info[0] < 3:
+            infostr = textlog["message"].tostring().strip("\x00")
+        else:
+            infostr = textlog["message"][0].decode('utf-8')
         header = flydra_analysis.analysis.result_utils.read_textlog_header(
             kresults, fail_on_error=False
         )
@@ -2321,8 +2324,12 @@ class CachingAnalyzer:
         return full, obj_id2idx
 
     def _load_dict(self, result_h5_file):
-        if isinstance(result_h5_file, str) or isinstance(result_h5_file, unicode):
-            raise ValueError("should pass opened HDF5, not filename")
+        if sys.version_info[0] < 3:
+            if isinstance(result_h5_file, str) or isinstance(result_h5_file, unicode):
+                raise ValueError("should pass opened HDF5, not filename")
+        else:
+            if isinstance(result_h5_file, str) or isinstance(result_h5_file, bytes):
+                raise ValueError("should pass opened HDF5, not filename")
         kresults = result_h5_file
         self_should_close = False
         # XXX I should make my reference a weakref
@@ -2346,7 +2353,11 @@ class CachingAnalyzer:
         return preloaded_dict
 
     def close(self):
-        for key, preloaded_dict in self.loaded_h5_cache.iteritems():
+        if sys.version_info[0] < 3:
+            cacheitems = self.loaded_h5_cache.iteritems()
+        else:
+            cacheitems = self.loaded_h5_cache.items()
+        for key, preloaded_dict in cacheitems:
             if preloaded_dict["self_should_close"]:
                 preloaded_dict["kresults"].close()
                 preloaded_dict["self_should_close"] = False

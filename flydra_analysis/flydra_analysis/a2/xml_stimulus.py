@@ -111,7 +111,7 @@ class Stimulus(object):
 
     def __init__(self, root):
         assert root.tag == "stimxml"
-        assert root.attrib["version"] == "1"
+        #assert root.attrib["version"] == "1"
         self.root = root
         self._R = None
 
